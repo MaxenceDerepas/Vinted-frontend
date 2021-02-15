@@ -1,0 +1,262 @@
+body {
+    font-family: "Maison neue";
+}
+
+/* ----------------Partie LOGIN/SIGNUP----------- */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modal > div {
+    background-color: #fff;
+    height: 500px;
+    width: 500px;
+    margin: 150px auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#icon {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.modal .title {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+.modal button {
+    margin: 20px 0;
+    border-radius: 10px;
+    height: 50px;
+    width: 170px;
+    color: #fff;
+    background-color: #2eb0ba;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    transition-duration: 0.5s;
+}
+
+.modal button:hover {
+    box-shadow: 5px 5px 10px 1px black;
+}
+.modal span {
+    margin: 7px 0;
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+.modal .alert {
+    color: red;
+    font-weight: bold;
+}
+
+/* ----------------Partie Header----------- */
+
+header img {
+    width: 104px;
+    height: 45px;
+    object-fit: cover;
+    margin-right: 120px;
+}
+.icon {
+    background-color: #f5f6f7;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    color: #bbbbbb;
+}
+header button {
+    margin: 30px;
+    height: 30px;
+    width: 150px;
+    background-color: #fff;
+    border: solid 1.5px #2eb0ba;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #2eb0ba;
+}
+header button:focus {
+    border: none;
+}
+header button:hover {
+    color: white;
+    background-color: #2eb0ba;
+}
+header input {
+    width: 590px;
+    height: 37px;
+    background-color: #f5f6f7;
+    margin-right: 30px;
+    border-style: none;
+    color: #bbbbbb;
+    font-size: 18px;
+}
+header input::placeholder {
+    color: #bbbbbb;
+}
+
+header > div {
+    background-color: #fff;
+    height: 120px;
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+/* ----------------Partie HOME----------- */
+.home {
+    margin-top: 30px;
+}
+/* HERO */
+.hero {
+    height: 600px;
+    width: 100%;
+    position: relative;
+}
+.hero img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.hero > div {
+    background-color: #fff;
+    height: 270px;
+    width: 410px;
+    position: absolute;
+    top: 74px;
+    left: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 25px;
+}
+.hero p {
+    font-size: 34px;
+}
+.hero .vendre {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 45px;
+    width: 190px;
+    cursor: pointer;
+    background-color: #2eb0ba;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.hero .vendre:hover {
+    color: #2eb0ba;
+    background-color: #fff;
+    border: solid 1px #2eb0ba;
+}
+/* OFFERS */
+.offers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 45px auto;
+    cursor: pointer;
+    width: 1280px;
+}
+.home-offer {
+    height: 450;
+    width: 240px;
+    margin-right: 12px;
+    margin-bottom: 50px;
+}
+
+.home-offer img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/* OFFER */
+
+.offer {
+    background-color: #eaedee;
+    padding-top: 30px;
+    padding-bottom: 250px;
+    display: flex;
+    justify-content: space-around;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.offer img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.offer > div:first-child {
+    height: 605px;
+    width: 400px;
+}
+.offer > div:last-child {
+    height: 605px;
+    width: 400px;
+    background-color: #fff;
+}
+.description {
+    display: flex;
+    flex-direction: column;
+    padding-top: 45px;
+}
+.key {
+    color: #9b9b9b;
+}
+.value {
+    color: #666;
+}
+.description > div {
+    display: flex;
+    margin: 0 auto;
+}
+.description > div > div {
+    width: 155px;
+}
+.description > p {
+    width: 310px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* PUBLISH */
+.publish {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    flex-direction: column;
+}
+.publish h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.publish form div {
+    height: 20px;
+    margin-bottom: 20px;
+}

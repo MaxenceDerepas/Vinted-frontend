@@ -1,25 +1,80 @@
-import logo from './logo.svg';
-import './App.css';
+import "./css/App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import Header from "./components/Header";
+import Home from "./containers/Home";
+import Offer from "./containers/Offer";
+import Login from "./components/Login";
+import SignUp from "./components/SIgnUp";
+import Publish from "./containers/Publish";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faTimes, faSearch);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [displayLogin, setDisplayLogin] = useState(false);
+    const [displaySignUp, setDisplaySignUp] = useState(false);
+    const [alert, setAlert] = useState(false);
+    const [userToken, setUserToken] = useState(
+        Cookies.get("userToken" || null)
+    );
+
+    const closeSignUp = () => {
+        setDisplaySignUp(false);
+        setAlert(false);
+    };
+
+    const closeLogin = () => {
+        setDisplayLogin(false);
+    };
+
+    const setUser = (token) => {
+        if (token) {
+            Cookies.set("userToken", token, { expires: 1 });
+            setUserToken(token);
+            console.log(userToken);
+        } else {
+            Cookies.remove("userToken");
+            setUserToken(null);
+        }
+    };
+
+    return (
+        <div className="App">
+            <Router>
+                <Header
+                    userToken={userToken}
+                    setUser={setUser}
+                    setDisplayLogin={setDisplayLogin}
+                    setDisplaySignUp={setDisplaySignUp}
+                />
+                <Login
+                    closeLogin={closeLogin}
+                    displayLogin={displayLogin}
+                    setUser={setUser}
+                />
+                <SignUp
+                    closeSignUp={closeSignUp}
+                    displaySignUp={displaySignUp}
+                    alert={alert}
+                    setAlert={setAlert}
+                    setUser={setUser}
+                />
+                <Switch>
+                    <Route path="/offer/publish">
+                        <Publish userToken={userToken} />
+                    </Route>
+                    <Route path="/offer/:id">
+                        <Offer />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

@@ -69,7 +69,10 @@ function App() {
                         <Offer />
                     </Route>
                     <Route path="/">
-                        <Home />
+                        <Home
+                            setDisplayLogin={setDisplayLogin}
+                            userToken={userToken}
+                        />
                     </Route>
                 </Switch>
             </Router>

@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ setDisplayLogin, userToken }) => {
     const [data, setData] = useState();
     const [isLoading, setIsloading] = useState(true);
+
+    const clickLink = () => {
+        if (!userToken) {
+            setDisplayLogin(true);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +38,11 @@ const Home = () => {
                 />
                 <div>
                     <p>Prêts à faire du tri dans vos placards ?</p>
-                    <Link to="/offer/publish" className="vendre">
+                    <Link
+                        onClick={clickLink}
+                        to={userToken ? "/offer/publish" : "/"}
+                        className="vendre"
+                    >
                         Commencer à vendre
                     </Link>
                 </div>

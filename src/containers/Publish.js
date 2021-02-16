@@ -37,6 +37,7 @@ const Publish = ({ userToken }) => {
                     },
                 }
             );
+            console.log(response);
         } catch (error) {
             console.log(error.message);
         }

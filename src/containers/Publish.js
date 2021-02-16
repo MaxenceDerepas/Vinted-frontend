@@ -11,7 +11,6 @@ const Publish = ({ userToken }) => {
     const [size, setSize] = useState("");
     const [city, setCity] = useState("");
     const [file, setFile] = useState();
-    console.log(userToken);
 
     const handleSubmit = async (event) => {
         try {
@@ -30,7 +29,7 @@ const Publish = ({ userToken }) => {
             formData.append("city", city);
 
             const response = await axios.post(
-                "https://app-vinted.herokuapp.com//offer/publish",
+                "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
                 formData,
                 {
                     headers: {

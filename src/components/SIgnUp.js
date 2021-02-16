@@ -26,7 +26,7 @@ const SignUp = ({ closeSignUp, displaySignUp, alert, setAlert, setUser }) => {
         if (password === confirmPassword) {
             try {
                 const response = await axios.post(
-                    "https://app-vinted.herokuapp.com/user/signup",
+                    "https://lereacteur-vinted-api.herokuapp.com/user/signup",
                     {
                         username: username,
                         email: email,

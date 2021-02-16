@@ -13,7 +13,7 @@ const Header = ({ userToken, setUser, setDisplayLogin, setDisplaySignUp }) => {
     return (
         <header>
             <div>
-                <img src={logo} alt="" />
+                <img src={logo} alt="logo-vinted" />
                 <div className="icon">
                     <FontAwesomeIcon icon="search" />
                 </div>

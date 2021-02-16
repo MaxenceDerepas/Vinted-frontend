@@ -16,7 +16,7 @@ const Home = ({ setDisplayLogin, userToken }) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "https://app-vinted.herokuapp.com/offers"
+                    "https://lereacteur-vinted-api.herokuapp.com/offers"
                 );
                 setData(response.data);
                 setIsloading(false);
@@ -50,8 +50,12 @@ const Home = ({ setDisplayLogin, userToken }) => {
             <div className="offers">
                 {data.offers.map((elem, index) => {
                     return (
-                        <Link to={`/offer/${elem._id}`} className="home-offer">
-                            <div key={elem._id}>
+                        <Link
+                            to={`/offer/${elem._id}`}
+                            key={elem._id}
+                            className="home-offer"
+                        >
+                            <div>
                                 <div>{elem.owner.account.username}</div>
                                 <div>
                                     <img

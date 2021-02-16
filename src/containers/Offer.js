@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const Offer = () => {
     const [data, setData] = useState();
@@ -46,6 +46,24 @@ const Offer = () => {
                         </div>
                     );
                 })}
+                <div>
+                    <p>{data.product_name}</p>
+                    <p>{data.product_description}</p>
+                    <section className="avatar">
+                        {data.owner.account.avatar ? (
+                            <img
+                                src={data.owner.account.avatar.secure_url}
+                                alt=""
+                            />
+                        ) : (
+                            <p></p>
+                        )}
+                        <span>{data.owner.account.username}</span>
+                    </section>
+                    <Link>
+                        <button className="acheter">Acheter</button>
+                    </Link>
+                </div>
             </div>
         </section>
     );

@@ -8,6 +8,7 @@ import Offer from "./containers/Offer";
 import Login from "./components/Login";
 import SignUp from "./components/SIgnUp";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faTimes, faSearch);
@@ -19,6 +20,9 @@ function App() {
     const [userToken, setUserToken] = useState(
         Cookies.get("userToken" || null)
     );
+    const [pricePayment, setPricePayment] = useState();
+    const [titlePayment, setTitlePayment] = useState();
+    const [idUser, setIdUser] = useState();
 
     const closeSignUp = () => {
         setDisplaySignUp(false);
@@ -66,7 +70,20 @@ function App() {
                         <Publish userToken={userToken} />
                     </Route>
                     <Route path="/offer/:id">
-                        <Offer />
+                        <Offer
+                            setPrice={setPricePayment}
+                            setTitle={setTitlePayment}
+                            setIdUser={setIdUser}
+                            userToken={userToken}
+                            setDisplayLogin={setDisplayLogin}
+                        />
+                    </Route>
+                    <Route path="/Payment">
+                        <Payment
+                            price={pricePayment}
+                            title={titlePayment}
+                            idUser={idUser}
+                        />
                     </Route>
                     <Route path="/">
                         <Home

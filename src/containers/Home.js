@@ -48,7 +48,7 @@ const Home = ({ setDisplayLogin, userToken }) => {
                 </div>
             </div>
             <div className="offers">
-                {data.offers.map((elem, index) => {
+                {data.offers.map((elem) => {
                     return (
                         <Link
                             to={`/offer/${elem._id}`}

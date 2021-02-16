@@ -1,11 +1,28 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
-const Offer = () => {
+const Offer = ({
+    setPrice,
+    setTitle,
+    setIdUser,
+    userToken,
+    setDisplayLogin,
+}) => {
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
+    const history = useHistory();
+    const handleClick = () => {
+        if (!userToken) {
+            setDisplayLogin(true);
+        } else {
+            setPrice(data.product_price);
+            setTitle(data.product_name);
+            setIdUser(data.owner._id);
+            history.push("/Payment");
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,11 +49,12 @@ const Offer = () => {
 
             <div className="description">
                 <p>{data.product_price} €</p>
+
                 {data.product_details.map((elem, index) => {
                     const keys = Object.keys(elem);
 
                     return (
-                        <div>
+                        <div key={index}>
                             <div className="key">
                                 <span>{keys[0]}</span>
                             </div>
@@ -60,9 +78,10 @@ const Offer = () => {
                         )}
                         <span>{data.owner.account.username}</span>
                     </section>
-                    <Link>
-                        <button className="acheter">Acheter</button>
-                    </Link>
+
+                    <button onClick={handleClick} className="acheter">
+                        Acheter
+                    </button>
                 </div>
             </div>
         </section>

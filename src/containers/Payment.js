@@ -43,7 +43,7 @@ const Payment = ({ price, title, idUser }) => {
                     (frais de protection et frais de port inclus).
                 </p>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm idUser={idUser} />
+                    <CheckoutForm idUser={idUser} price={price} title={title} />
                 </Elements>
             </div>
         </section>

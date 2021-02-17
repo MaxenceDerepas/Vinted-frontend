@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
-const CheckoutForm = (idUser) => {
+const CheckoutForm = (idUser, title, price) => {
     console.log(idUser);
     const stripe = useStripe();
     const elements = useElements();
@@ -23,6 +23,8 @@ const CheckoutForm = (idUser) => {
                 "https://lereacteur-vinted-api.herokuapp.com/payment",
                 {
                     stripeToken: stripeToken,
+                    title: title,
+                    amount: price,
                 }
             );
             if (response.status === 200) {

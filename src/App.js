@@ -20,9 +20,6 @@ function App() {
     const [userToken, setUserToken] = useState(
         Cookies.get("userToken" || null)
     );
-    const [pricePayment, setPricePayment] = useState();
-    const [titlePayment, setTitlePayment] = useState();
-    const [idUser, setIdUser] = useState();
 
     const closeSignUp = () => {
         setDisplaySignUp(false);
@@ -71,19 +68,12 @@ function App() {
                     </Route>
                     <Route path="/offer/:id">
                         <Offer
-                            setPrice={setPricePayment}
-                            setTitle={setTitlePayment}
-                            setIdUser={setIdUser}
                             userToken={userToken}
                             setDisplayLogin={setDisplayLogin}
                         />
                     </Route>
                     <Route path="/Payment">
-                        <Payment
-                            price={pricePayment}
-                            title={titlePayment}
-                            idUser={idUser}
-                        />
+                        <Payment />
                     </Route>
                     <Route path="/">
                         <Home

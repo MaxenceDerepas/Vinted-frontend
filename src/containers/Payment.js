@@ -1,10 +1,14 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
+import { useLocation } from "react-router-dom";
 
 const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
 
-const Payment = ({ price, title, idUser }) => {
+const Payment = () => {
+    const location = useLocation();
+    const { title, price, userId } = location.state;
+
     const protect = (price / 10).toFixed(2);
     const shippingFees = ((price * 2) / 10).toFixed(2);
     const total = price + Number(protect) + Number(shippingFees);
@@ -43,7 +47,7 @@ const Payment = ({ price, title, idUser }) => {
                     (frais de protection et frais de port inclus).
                 </p>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm idUser={idUser} price={price} title={title} />
+                    <CheckoutForm userId={userId} price={price} title={title} />
                 </Elements>
             </div>
         </section>

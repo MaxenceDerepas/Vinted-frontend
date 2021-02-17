@@ -2,13 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-const Offer = ({
-    setPrice,
-    setTitle,
-    setIdUser,
-    userToken,
-    setDisplayLogin,
-}) => {
+const Offer = ({ userToken, setDisplayLogin }) => {
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
@@ -17,10 +11,11 @@ const Offer = ({
         if (!userToken) {
             setDisplayLogin(true);
         } else {
-            setPrice(data.product_price);
-            setTitle(data.product_name);
-            setIdUser(data.owner._id);
-            history.push("/Payment");
+            history.push("/Payment", {
+                title: data.product_name,
+                userId: data.owner._id,
+                price: data.product_price,
+            });
         }
     };
 

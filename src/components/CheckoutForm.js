@@ -2,8 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
-const CheckoutForm = (idUser, title, price) => {
-    console.log(idUser);
+const CheckoutForm = ({ userId, title, price }) => {
     const stripe = useStripe();
     const elements = useElements();
 
@@ -14,7 +13,7 @@ const CheckoutForm = (idUser, title, price) => {
             event.preventDefault();
             const cardElements = elements.getElement(CardElement);
             const stripeResponse = await stripe.createToken(cardElements, {
-                name: idUser.idUser,
+                name: userId,
             });
 
             const stripeToken = stripeResponse.token.id;
